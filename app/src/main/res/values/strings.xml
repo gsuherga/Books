@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">Books</string>
+
+    <!-- Text to display in the list when there are no books [CHAR LIMIT=NONE] -->
+    <string name="no_books">Sorry. No books found.</string>
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">There is no internet connection.</string>
+
+        <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_start">Find your book</string>
+
+</resources>

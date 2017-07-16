@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp">
+
+    <ImageView
+        android:padding="8dp"
+        android:id="@+id/book_image"
+        android:layout_width="112dp"
+        android:layout_height="174dp"
+        android:scaleType="fitXY"
+        android:gravity="center"
+         />
+
+    <LinearLayout
+        android:id="@+id/bookList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:weightSum="3"
+        >
+
+        <TextView
+            android:id="@+id/book_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/book_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="12sp">
+
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
