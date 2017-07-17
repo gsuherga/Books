@@ -110,10 +110,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
             public boolean onQueryTextSubmit(String query) {
 
                 searchView.clearFocus();
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
-                searchItem.collapseActionView();
-
+                searchView.getQuery().toString().trim();
                 isConected(query);
                 return true;
             }
@@ -141,6 +138,8 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         //URL with the keyword the user has written
 
         urlJSON = SAMPLE_JSON_RESPONSE + query;
+
+        Log.v("urlJSON", "urlJson= " + urlJSON);
 
         if (isConnected) {
             // Get a reference to the LoaderManager, in order to interact with loaders.
