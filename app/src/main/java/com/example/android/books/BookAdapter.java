@@ -29,8 +29,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
      * The context is used to inflate the layout file, and the list is the data we want
      * to populate into the lists.
      *
-     * @param context     The current context. Used to inflate the layout file.
-     * @param books the list of the books
+     * @param context The current context. Used to inflate the layout file.
+     * @param books   the list of the books
      */
     public BookAdapter(Activity context, List<Book> books) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
@@ -75,19 +75,28 @@ public class BookAdapter extends ArrayAdapter<Book> {
         //Title
         bookTitle.setText(currentBook.getBookTitle());
         //Subtitle
-        if (bookSubtitle != null) {
+        if (currentBook.getBookSubTitle() != null) {
             bookSubtitle.setText(currentBook.getBookSubTitle());
         }
         //Authors
-        String [] authors = currentBook.getAuthor();
 
-        for (int j = 0; j < authors.length; j++) {
+        if (currentBook.getAuthor() != null) {
+            String[] authors = currentBook.getAuthor();
 
-            bookAuthor.setText(currentBook.getAuthor() +"\n");
+            for (int j = 0; j < authors.length; j++) {
+
+                bookAuthor.setText(currentBook.getAuthor() + "\n");
+            }
+        } else {
+            bookAuthor.setText(R.string.no_authors);
         }
 
-        //Get the image about the book and set the ImageView
-        Picasso.with(getContext()).load(Uri.parse(currentBook.getBookImage())).error(R.drawable.no_cover_image).into(bookPhoto);
+        if (currentBook.getBookImage() != null) {
+            //Get the image about the book and set the ImageView
+            Picasso.with(getContext()).load(Uri.parse(currentBook.getBookImage())).into(bookPhoto);
+        } else {
+            Picasso.with(getContext()).load(R.drawable.no_cover_image).into(bookPhoto);
+        }
 
         //Get the ListView so we can click on them to open the web with more information
 
@@ -99,7 +108,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (Intent.ACTION_VIEW);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(currentBook.getMweb()));
                 getContext().startActivity(intent);
 

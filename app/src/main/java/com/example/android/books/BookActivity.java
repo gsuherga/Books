@@ -108,8 +108,6 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-                searchView.clearFocus();
                 searchView.getQuery().toString().trim();
                 isConected(query);
                 return true;

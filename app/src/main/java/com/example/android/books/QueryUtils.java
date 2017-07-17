@@ -159,8 +159,18 @@ public final class QueryUtils {
                     JSONObject currentBook = featureArray.getJSONObject(i);
                     //We look for the JSONObject propertiesBook
                     JSONObject propertiesBook = currentBook.getJSONObject("volumeInfo");
-                    JSONArray authors = propertiesBook.getJSONArray("authors");
-                    JSONObject imageBookJSON = propertiesBook.getJSONObject("imageLinks");
+                    JSONArray authors;
+                    try {
+                        authors = propertiesBook.getJSONArray("authors");
+                    } catch (Exception eAuthors) {
+                        authors = null;
+                    }
+                    JSONObject imageBookJSON;
+                    try {
+                        imageBookJSON = propertiesBook.getJSONObject("imageLinks");
+                    } catch (Exception eImageBookJSON){
+                        imageBookJSON = null;
+                    }
 
 
                     //Inside the propertiesBook JSON Object we can find the values for bookTitle, bookSubtitle
@@ -174,23 +184,35 @@ public final class QueryUtils {
                     String bookSubtitle;
                     try {
                         bookSubtitle = propertiesBook.getString("subtitle");
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         bookSubtitle = null;
                     }
+
                     //Book image
-                    String imageBook = imageBookJSON.getString("smallThumbnail");
+                    String imageBook = null;
+                    if (imageBookJSON != null) {
+                        imageBook = imageBookJSON.getString("smallThumbnail");
+                    }
+
                     //Book web
                     String web = propertiesBook.getString("previewLink");
+
                     //Book authors
-                    int numAuthors = authors.length();
-                    final String[] bookauthors = new String[numAuthors];
-                    for (int j = 0; j < numAuthors; j++) {
-                        bookauthors[j] = authors.getString(j);
+                    String [] bookauthors = null;
+
+                    if (authors != null) {
+
+                        int numAuthors = authors.length();
+
+                        bookauthors = new String[numAuthors];
+                        for (int j = 0; j < numAuthors; j++) {
+                            bookauthors[j] = authors.getString(j);
+                        }
                     }
 
                     //We create a new Book Object with the data we have got from the JSON Object
 
-                    Book book = new Book(bookTitle,bookSubtitle,bookauthors,imageBook, web);
+                    Book book = new Book(bookTitle, bookSubtitle, bookauthors, imageBook, web);
 
                     //we add the book to the list of books
                     books.add(book);
