@@ -60,7 +60,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
 
     /**
-     * Sample JSON
+     * Sample JSON to get book data
      */
 
     private static final String SAMPLE_JSON_RESPONSE = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -123,6 +123,9 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     private void isConected(String query){
 
+        TextView startTextview = (TextView) findViewById(R.id.start);
+        startTextview.setVisibility(View.GONE);
+
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -134,6 +137,8 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
                 activeNetwork.isConnectedOrConnecting();
 
         //URL with the keyword the user has written
+
+        query = query.replaceAll(" ","");
 
         urlJSON = SAMPLE_JSON_RESPONSE + query;
 

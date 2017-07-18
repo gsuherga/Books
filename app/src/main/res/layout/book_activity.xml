@@ -11,7 +11,6 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:drawSelectorOnTop="true"
         android:orientation="vertical"></ListView>
 
     <TextView
@@ -23,6 +22,16 @@
         android:visibility="gone"
         android:layout_margin="20dp"
         tools:text="No items found"/>
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:layout_margin="20dp"
+        android:text="@string/search"/>
 
         <ProgressBar
             android:id="@+id/progress_bar"

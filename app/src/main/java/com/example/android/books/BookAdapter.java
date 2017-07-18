@@ -3,6 +3,7 @@ package com.example.android.books;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
 import java.util.List;
-
-import static com.example.android.books.R.id.book_title;
 
 /**
  * Created by jesus on 30/05/17.
@@ -65,9 +65,9 @@ public class BookAdapter extends ArrayAdapter<Book> {
         ImageView bookPhoto = (ImageView) listItemView.findViewById(R.id.book_image);
 
         // Find the TextViews in the single_book layout
-        TextView bookTitle = (TextView) listItemView.findViewById(book_title);
-        TextView bookSubtitle = (TextView) listItemView.findViewById(R.id.book_title);
-        TextView bookAuthor = (TextView) listItemView.findViewById(R.id.book_subtitle);
+        TextView bookTitle = (TextView) listItemView.findViewById(R.id.book_title);
+        TextView bookSubtitle = (TextView) listItemView.findViewById(R.id.book_subtitle);
+        TextView bookAuthor = (TextView) listItemView.findViewById(R.id.book_author);
 
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
@@ -77,16 +77,18 @@ public class BookAdapter extends ArrayAdapter<Book> {
         //Subtitle
         if (currentBook.getBookSubTitle() != null) {
             bookSubtitle.setText(currentBook.getBookSubTitle());
+        } else {
+            bookSubtitle.setVisibility(View.GONE);
         }
         //Authors
 
         if (currentBook.getAuthor() != null) {
             String[] authors = currentBook.getAuthor();
+            bookAuthor.setText(Arrays.toString(authors).replaceAll("\\[|\\]", ""));
 
-            for (int j = 0; j < authors.length; j++) {
-
-                bookAuthor.setText(currentBook.getAuthor() + "\n");
-            }
+          /*  for (int j = 0; j < authors.length; j++) {
+                Log.v("Authors", currentBook.getBookTitle()+authors[j]);
+            } */
         } else {
             bookAuthor.setText(R.string.no_authors);
         }

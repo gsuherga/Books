@@ -8,13 +8,17 @@
     <string name="no_books">Sorry. No books found.</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
-    <string name="no_internet_connection">There is no internet connection.</string>
+    <string name="no_internet_connection">There seems to be technical difficulties. Chech your conection and try again</string>
 
         <!-- First screen when openning the app  -->
     <string name="settings_start">Find your book</string>
 
     <!--  When there is no authors -->
     <string name="no_authors">No authors found</string>
+
+    <!--  sarch books -->
+    <string name="search">Search a book or an author</string>
+
 
 
 </resources>

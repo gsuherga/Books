@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Libros</string>
+    <string name="no_authors">No se encontraron autores</string>
+    <string name="no_books">Lo sentimos. No se han encontrado libros</string>
+    <string name="no_internet_connection">Parece que hay problemas técnicos. Compruébalo tu conexión e intentálo de nuevo</string>
+    <string name="search">Busca un libro o un autor</string>
+    <string name="settings_start">Encuentra tu libro</string>
+</resources>
