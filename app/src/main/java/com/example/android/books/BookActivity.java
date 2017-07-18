@@ -147,7 +147,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         query = query.replaceAll(" ",""); //To delete spaces between words
 
-        urlJSON = SAMPLE_JSON_RESPONSE + query;
+        urlJSON = SAMPLE_JSON_RESPONSE + query + "&maxResults=40";
 
         Log.v("urlJSON", "urlJson= " + urlJSON);
 
