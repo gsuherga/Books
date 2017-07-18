@@ -43,6 +43,10 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     private LoaderManager loaderManager;
 
+    //Progress bar when searching
+
+    ProgressBar progressBar;
+
     //Adapter for the list of books
 
     BookAdapter bookAdapter;
@@ -79,6 +83,10 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_activity);
+
+        //Pogress bar to be used when looking for the books.
+
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         bookAdapter = new BookAdapter(this, new ArrayList<Book>());
 
@@ -126,7 +134,6 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         TextView startTextview = (TextView) findViewById(R.id.start);
         startTextview.setVisibility(View.GONE);
 
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
 
         ConnectivityManager cm =
@@ -138,7 +145,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         //URL with the keyword the user has written
 
-        query = query.replaceAll(" ","");
+        query = query.replaceAll(" ",""); //To delete spaces between words
 
         urlJSON = SAMPLE_JSON_RESPONSE + query;
 
@@ -157,8 +164,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
             Log.i("InitLoaderManager", loaderManager.toString());
         } else {
             //To take off the progress bar
-            ProgressBar loadIsDone = (ProgressBar) findViewById(R.id.progress_bar);
-            loadIsDone.setVisibility(View.GONE);
+            progressBar.setVisibility(View.GONE);
             mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
@@ -182,8 +188,7 @@ public class BookActivity extends AppCompatActivity implements LoaderCallbacks<L
         bookAdapter.clear();
 
         //To take off the progress bar
-        ProgressBar loadIsDone = (ProgressBar) findViewById(R.id.progress_bar);
-        loadIsDone.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
 
         // Set empty state text to display "No books found."
         String message1 = getResources().getString(R.string.no_books);
